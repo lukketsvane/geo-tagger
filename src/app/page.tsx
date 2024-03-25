@@ -9,9 +9,6 @@ import { Button } from '@/components/ui/button';
 import getMarkers from '../../convex/getMarkers';
 import placePin from '../../convex/placePin';
 
-const markers = useQuery(getMarkers);
-const addMarker = useMutation(placePin);
-
 const defaultCenter = [51.505, -0.09];
 const defaultZoom = 13;
 const pinIcon = L.icon({
@@ -37,6 +34,9 @@ function AddPinOnClick({ addMarker }: AddPinOnClickProps) {
 }
 
 export default function Home() {
+  const markers = useQuery("getMarkers");
+  const addMarker = useMutation("placePin");
+
   return (
     <div>
       <SignedOut>
