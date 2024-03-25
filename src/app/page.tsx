@@ -15,13 +15,16 @@ const pinIcon = L.icon({
   iconAnchor: [19, 38], // Adjust anchor point as needed
 });
 
+type AddPinOnClickProps = {
+  addMarker: (args: { lat: number; lng: number; message: string }) => Promise<void>;
+};
 
-function AddPinOnClick({ addMarker }) {
+function AddPinOnClick({ addMarker }: AddPinOnClickProps) {
   useMapEvents({
     click(e) {
-      const message = prompt('Enter a message for this pin:'); // Consider a more user-friendly approach
+      const message = prompt('Enter a message for this pin:');
       if (message) {
-        addMarker({ lat: e.latlng.lat, lng: e.latlng.lng, message });
+        addMarker({ lat: e.latlng.lat, lng: e.latlng.lng, message }).catch(console.error);
       }
     },
   });
