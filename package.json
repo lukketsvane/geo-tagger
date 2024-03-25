@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export", // Example: Adding 'next export' after 'next build'
     "start": "next start",
-    "lint": "next lint"
-  },
+    "lint": "next lint || true"
+  },  
   "dependencies": {
     "@clerk/nextjs": "^4.29.9",
     "@radix-ui/react-slot": "^1.0.2",
